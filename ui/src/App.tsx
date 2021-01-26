@@ -1,9 +1,8 @@
 import React from 'react';
+import { LeadsPage } from './components/pages';
 
 export default function App() {
   return (
-    <div>
-      Edit a file and save to reload.
-    </div>
+    <LeadsPage />
   );
 };

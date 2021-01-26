@@ -2,9 +2,11 @@
 
 body {
   color: #303034;
+  background-color: #F3F4F6;
   margin: 0;
   padding: 0;
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
