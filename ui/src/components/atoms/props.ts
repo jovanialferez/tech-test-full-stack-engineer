@@ -4,11 +4,11 @@ export interface HeaderProps {
   children: React.ReactNode;
 }
 
-export interface TabLinkProps {
+export interface TabItemProps extends React.HtmlHTMLAttributes<HTMLElement> {
   active?: boolean;
 }
 
-export interface TabProps extends TabLinkProps {
+export interface TabProps extends TabItemProps {
   label: string;
 }
 

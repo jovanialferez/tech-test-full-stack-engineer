@@ -6,10 +6,29 @@ import { CardHeaderProps } from './props';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
 `;
 
-export const CardHeader: React.FC<CardHeaderProps> = ({ title }) => (
-  <Wrapper>
-    <Avatar initial={title.substr(0, 1)} />
+const HeadingWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+`;
+
+
+const Heading = styled.span`
+  font-weight: 700;
+`;
+
+const SubHeading = styled.span`
+`;
+
+export const CardHeader: React.FC<CardHeaderProps> = ({ heading, subHeading, ...props }) => (
+  <Wrapper {...props}>
+    <Avatar initial={heading.substr(0, 1)} />
+    <HeadingWrapper>
+      <Heading>{heading}</Heading>
+      <SubHeading>{subHeading}</SubHeading>
+    </HeadingWrapper>
   </Wrapper>
 );

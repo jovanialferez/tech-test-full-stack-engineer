@@ -1,17 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TabLinkProps, TabProps } from './props';
+import { TabProps, TabItemProps } from './props';
 import { colors } from '../theme';
 
-const Wrapper = styled.div`
+const Item = styled.li<TabItemProps>`
   flex: 1;
   text-align: center;
-`;
-
-const Link = styled.a<TabLinkProps>`
-  display: block;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   text-decoration: none;
   font-weight: 700;
   color: ${colors.black};
@@ -26,5 +22,5 @@ const Link = styled.a<TabLinkProps>`
 `;
 
 export const Tab: React.FC<TabProps> = ({ label, ...props }) => (
-  <Wrapper><Link {...props} href='#'>{label}</Link></Wrapper>
+  <Item {...props}>{label}</Item>
 );

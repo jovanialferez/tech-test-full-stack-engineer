@@ -1,7 +1,8 @@
 import React from 'react';
 
 export interface CardHeaderProps {
-  title: string;
+  heading: string;
+  subHeading: string;
 }
 
 export interface LabelWithIconProps {
