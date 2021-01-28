@@ -21,16 +21,22 @@ export const LeadsPage = () => {
   const { invitedLeads, acceptedLeads, onAcceptLead, onDeclineLead, fetchLeads } = useLead();
   
   const handleOnAcceptLead = useCallback(
-    (lead: Lead) => {
-      onAcceptLead(lead);
+    async (lead: Lead) => {
+      // let's "await", so that next request to fetch gets the updated list (not-guaranteed though)
+      await onAcceptLead(lead);
+      fetchLeads(currentType);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [onAcceptLead],
   );
 
   const handleOnDeclineLead = useCallback(
-    (lead: Lead) => {
-      onDeclineLead(lead);
+    async (lead: Lead) => {
+      // let's "await", so that next request to fetch gets the updated list (not-guaranteed though)
+      await onDeclineLead(lead);
+      fetchLeads(currentType);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [onDeclineLead],
   );
   
@@ -50,15 +56,17 @@ export const LeadsPage = () => {
           <CardWrapper key={lead.id}>
             <InvitedLeadCard
               type={lead.status}
-              heading={lead.contactName}
+              heading={lead.contactName.split(' ')[0]}
               subHeading={dayjs.unix(lead.creationTimestamp).format('MMM D @h:mma')}
-              location='Carramar 6031'
-              category='Carpentry'
-              jobId={12346}
-              price={12.50}
-              description='Lorem ipsum'
-              phoneNumber='400000000'
-              email='one@test.com'
+              location={lead.location}
+              category={lead.category}
+              jobId={lead.id}
+              price={lead.price}
+              description={lead.description}
+              phoneNumber={lead.contactNumber}
+              email={lead.contactEmail}
+              onAcceptClick={() => handleOnAcceptLead(lead)}
+              onDeclineClick={() => handleOnDeclineLead(lead)}
             />
           </CardWrapper>
         ))
@@ -70,13 +78,13 @@ export const LeadsPage = () => {
               type={lead.status}
               heading={lead.contactName}
               subHeading={dayjs.unix(lead.creationTimestamp).format('MMM D @h:mma')}
-              location='Carramar 6031'
-              category='Carpentry'
-              jobId={12346}
-              price={12.50}
-              description='Lorem ipsum'
-              phoneNumber='400000000'
-              email='one@test.com'
+              location={lead.location}
+              category={lead.category}
+              jobId={lead.id}
+              price={lead.price}
+              description={lead.description}
+              phoneNumber={lead.contactNumber}
+              email={lead.contactEmail}
             />
           </CardWrapper>
         ))

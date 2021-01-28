@@ -27,7 +27,7 @@ export interface LeadContextType {
 
 export enum ActionTypes {
   LeadsAcceptedLoaded = 'leads/accepted/loaded',
-  LeadsInvitedLoaded = 'leads/invited/accepted',
+  LeadsInvitedLoaded = 'leads/invited/loaded',
   LeadUpdated = 'lead/updated',
 }
 
